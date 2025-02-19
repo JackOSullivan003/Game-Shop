@@ -11,7 +11,7 @@ $products = [
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PHP Test</title> 
+        <title>Game & Shop</title> 
     <!--basic css -->
         <style> 
             body {
@@ -70,8 +70,6 @@ $products = [
                 font-size: 16px;
             }
 
-
-
             footer {
                 background-color: lightgrey;
                 padding: 10px;
@@ -95,15 +93,19 @@ $products = [
     </head>
     <body>
     <header>
+
         <h1>Welcome to Game & Stop</h1>
+        <!--basic nav-bar -->
         <nav>
             <a href="index.php">Home</a> | 
-            <a href="contact.php">Contact</a>
+            <a href="#">Contact</a>
         </nav>
     </header>
     
+        <!--section for products display-->
     <section class= "products-section">
         <h2>Featured Products</h2>
+        <!--displaying products stored in products variable using a PHP foreach loop-->
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
