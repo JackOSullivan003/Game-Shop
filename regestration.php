@@ -14,7 +14,7 @@ $logins = [
             body {
                 background-color: grey;
                 font-family: Arial, sans-serif; 
-                text-align: left; 
+                text-align: center; 
             }
             header {
                 background-color: lightgrey;
@@ -29,35 +29,32 @@ $logins = [
                 display: inline-block; 
                 background-color: white; 
                 margin: 10px; 
-                width: 400px;
-                padding: 10px; 
-                 
-                vertical-align: left;
+                width: 600px;
+                padding-left: 5px; 
+                vertical-align: center;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
             .login-details {
-                margin: 10px 0;
+                margin: 10px 10px;
             }
 
             .product h3 {
                 margin: 0;
                 font-size: 22px;
-                
                 font-weight: bold;
             }
 
             .login h2 {
                 margin: 10px;
                 font-size: 22px;
-                
                 font-weight: bold;
                 text-align: center;
             }
 
             footer {
                 background-color: lightgrey;
-                padding: 10px;
+                padding: 5px;
                 text-align: center;
             }
 
