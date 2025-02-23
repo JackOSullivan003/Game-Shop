@@ -1,5 +1,4 @@
 <?php
-// Define sample login variables, this is a list of variable names and values for each product 
 $logins = [
     ["Username" => "enter username:", "Password" => "enter password:"]
 ];
@@ -8,8 +7,7 @@ $logins = [
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Game & Stop</title> 
-    <!--basic css -->
+        <title>Game & Stop</title>
         <style> 
             body {
                 background-color: grey;
@@ -58,7 +56,6 @@ $logins = [
                 text-align: center;
             }
 
-            /*style for social media links*/
             a.social-media-link {
                 color: black;
                 text-decoration: none;
@@ -70,26 +67,21 @@ $logins = [
                 color: blue;
             }
         </style>
-        <!--using font-awesome library to add buttons for the facebook and twitter social media links, this avoids the need for images for them-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
     <header>
-
         <h1>Welcome to Game & Stop</h1>
-        <!--basic nav-bar -->
         <nav>
             <a href="index.php">Home</a> | 
             <a href="#">Contact</a>
         </nav>
     </header>
     
-    <!--section for login display-->
     <section class="login">
         <h2>Welcome</h2>
         <h2>Sign in to Game & Stop</h2>
         <br>
-        <!-- Displaying login form using PHP -->
         <?php foreach ($logins as $login): ?>
             <div class="login">
              <form action="#" method="post">
@@ -109,7 +101,6 @@ $logins = [
 
     <footer>
         <p>&copy; 2025 Game & Stop</p>
-        <!--add social media links-->
         <a class="social-media-link" href="#"><i class="fa fa-facebook"></i></a>
         <a class="social-media-link" href="#"><i class="fa fa-twitter"></i></a>
     </footer>
