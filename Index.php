@@ -1,7 +1,7 @@
 <?php
 // Define sample product variables, this is a list of variable names and values for each product 
 $products = [
-    ["name" => "Dayz", "price" => "$40.00", "image" => "temp/dayz.jpg"],
+    ["name" => "Dayz", "price" => "$40.00", "image" => "temp/dayz.jpg", "link" => "Dayz.php"],
     ["name" => "Balder's Gate 3", "price" => "$80.00", "image" => "temp/balders_gate_3.jpg"],
     ["name" => "Gaming Mouse", "price" => "$30.00", "image" => "temp/mouse.jpg"],
     ["name" => "Gaming Keyboard", "price" => "$75.00", "image" => "temp/keyboard.jpg"]
@@ -108,11 +108,13 @@ $products = [
         <!--displaying products stored in products variable using a PHP foreach loop-->
         <?php foreach ($products as $product): ?>
             <div class="product">
+                <a href="<?= $product['link']; ?>" >
                 <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
                 <div class="product-details">
                     <h3><?= $product['name']; ?></h3>
                     <p>Price: <?= $product['price']; ?></p>
                 </div>
+                </a>
             </div>
         <?php endforeach; ?>
     </section>
