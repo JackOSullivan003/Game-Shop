@@ -7,6 +7,11 @@ $products = [
     ["id" => 4, "name" => "Gaming Keyboard", "price" => "$75.00", "image" => "temp/keyboard.jpg", "description" => ""]
 ];
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "games_shop";
+
 
 // Get product ID from URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -22,6 +27,7 @@ if ($id != 0) {
 } else {
     $product = null;
 }
+
 
 ?>
 

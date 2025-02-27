@@ -1,12 +1,42 @@
 <?php
-// Define sample product variables, this is a list of variable names and values for each product 
-$products = [
-    ["id" => 1, "name" => "Dayz", "price" => "$40.00", "image" => "temp/dayz.jpg"],
-    ["id" => 2, "name" => "Balder's Gate 3", "price" => "$80.00", "image" => "temp/balders_gate_3.jpg"],
-    ["id" => 3, "name" => "Gaming Mouse", "price" => "$30.00", "image" => "temp/mouse.jpg"],
-    ["id" => 4, "name" => "Gaming Keyboard", "price" => "$75.00", "image" => "temp/keyboard.jpg"]
-];
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "games_shop";
+
+
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: ". mysqli_connect_error());
+}
+else {
+    echo "Connection successful.";
+}
+
+
+$sql = "SELECT product_id, product_name, product_image, price FROM products";
+
+$result = mysqli_query($conn, $sql);
+
+//create array of products from database 
+
+$products = [];
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        $products[] = $row;
+    }
+}
+echo json_encode($products);
+
+
+$conn->close();
 ?>
+ 
 
 <!DOCTYPE html>
 <html>
@@ -98,7 +128,8 @@ $products = [
         <!--basic nav-bar -->
         <nav>
             <a href="index.php">Home</a> | 
-            <a href="#">Contact</a>
+            <a href="index.php"></a> | 
+            <a href="#">Contact</a> 
         </nav>
     </header>
     
@@ -108,10 +139,10 @@ $products = [
         <!--displaying products stored in products variable using a PHP foreach loop-->
         <?php foreach ($products as $product): ?>
             <div class="product">
-                <a href="product.php?id=<?= $product['id']; ?>" >
-                <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
+                <a href="product.php?id=<?= $product['product_id']; ?>" >
+                <img src="display.php?id=<?= $product['product_id']; ?>">
                 <div class="product-details">
-                    <h3><?= $product['name']; ?></h3>
+                    <h3><?= $product['product_name']; ?></h3>
                     <p>Price: <?= $product['price']; ?></p>
                 </div>
                 </a>
