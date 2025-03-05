@@ -1,13 +1,10 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "games_shop";
-
-
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -18,106 +15,44 @@ else {
     echo "Connection successful.";
 }
 
+$productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_url FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
 
-$sql = "SELECT product_id, product_name, product_image, price FROM products";
 
-$result = mysqli_query($conn, $sql);
+$productResult = mysqli_query($conn, $productRequest);
 
 //create array of products from database 
 
 $products = [];
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
+if (mysqli_num_rows($productResult) > 0) {
+    while($row = mysqli_fetch_assoc($productResult)) {
         $products[] = $row;
     }
 }
-echo json_encode($products);
 
+$adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
+
+$adsResult = mysqli_query($conn, $adsRequest);
+//create array of ads from database
+
+$ads = [];
+if (mysqli_num_rows($adsResult) > 0) {
+    while($row = mysqli_fetch_assoc($adsResult)) {
+        $ads[] = $row;
+    }
+}
+
+echo json_encode($ads);
 
 $conn->close();
 ?>
  
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Game & Shop</title> 
-    <!--basic css -->
-        <style> 
-            body {
-                background-color: grey;
-                font-family: Arial, sans-serif; 
-                text-align: center; 
-            }
-            header {
-                background-color: lightgrey;
-            }
-
-            nav {
-                display: flex;
-                justify-content: space-around;
-                background-color: white;
-            }
-            .product { 
-                display: inline-block; 
-                background-color: white; 
-                margin: 20px; 
-                width: 200px;
-                height: 300px;
-                padding: 10px; 
-                border: 1px solid #ccc; 
-                vertical-align: middle;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-
-            }
-            .products-section {
-                background-color: lightgrey; 
-            }
-            .product:hover {
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            }
-            .product .product-details {
-                width: 180px;
-                height: 80px;
-                background-color: lightgrey;
-                display: inline-block;
-            }
-            .product img { 
-                width: 150px; 
-                height: 200px; 
-                object-fit: contain;
-            }
-            .product h3 {
-                margin: 0;
-                font-size: 22px;
-                line-height: 1.5;
-                font-weight: bold;
-
-            }
-            .product p {
-                margin: 10px;
-                font-size: 16px;
-            }
-
-            footer {
-                background-color: lightgrey;
-                padding: 10px;
-                text-align: center;
-            }
-            /*style for social media links*/
-            a.social-media-link {
-                color: black;
-                text-decoration: none;
-                padding: 5px;
-                font-size: 20px;
-            }
-            a.social-media-link:hover {
-                color: blue;
-            }
-        </style>
         <!--using font-awesome library to add buttons for the facebook and twitter social media links, this avoids the need for images for them-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
 
 
     </head>
@@ -132,7 +67,18 @@ $conn->close();
             <a href="#">Contact</a> 
         </nav>
     </header>
-    
+
+    <section class="ad-container">
+        <div class="slider">
+            <?php foreach ($ads as $ad): ?>
+                <img src="<?= $ad['image_url']; ?>" class='ad' alt="Advertisement">
+                <?php endforeach; ?>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+        <script src="js/adBanner.js"></script>
+        
         <!--section for products display-->
     <section class= "products-section">
         <h2>Featured Products</h2>
@@ -140,7 +86,7 @@ $conn->close();
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="product.php?id=<?= $product['product_id']; ?>" >
-                <img src="display.php?id=<?= $product['product_id']; ?>">
+                <img src="<?= $product['image_url']; ?>">
                 <div class="product-details">
                     <h3><?= $product['product_name']; ?></h3>
                     <p>Price: <?= $product['price']; ?></p>

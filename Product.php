@@ -15,7 +15,7 @@ $dbname = "games_shop";
 
 // Get product ID from URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-echo $id;
+
 // Check if product exists
 if ($id != 0) {
     //find product with matching id
@@ -35,89 +35,9 @@ if ($id != 0) {
 <html>
     <head>
         <title>Game & Shop</title> 
-    <!--basic css -->
-        <style> 
-            body {
-                background-color: grey;
-                font-family: Arial, sans-serif; 
-                text-align: center; 
-            }
-            header {
-                background-color: lightgrey;
-            }
-
-            nav {
-                display: flex;
-                justify-content: space-around;
-                background-color: white;
-            }
-            .product { 
-                display: inline-block; 
-                background-color: white; 
-                margin: 50px; 
-                width: 500px;
-                height: 600px;
-                padding: 10px;
-                border: 1px solid #ccc; 
-                vertical-align: middle;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                cursor: pointer;
-
-            }
-            .products-section {
-                background-color: lightgrey; 
-            }
-            .product:hover {
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            }
-            .product .product-details {
-                width: 180px;
-                height: 80px;
-                background-color: lightgrey;
-                display: inline-block;
-            }
-            .product img { 
-                width: 150px; 
-                height: 200px; 
-                object-fit: contain;
-            }
-            .product h3 {
-                margin: 0;
-                font-size: 22px;
-                line-height: 1.5;
-                font-weight: bold;
-
-            }
-            .product p {
-                margin: 10px;
-                font-size: 16px;
-            }
-            
-            .product a {
-                height: 10px;
-                margin: 50px;
-                font-size: 12px;
-            }
-
-            footer {
-                background-color: lightgrey;
-                padding: 10px;
-                text-align: center;
-            }
-            /*style for social media links*/
-            a.social-media-link {
-                color: black;
-                text-decoration: none;
-                padding: 5px;
-                font-size: 20px;
-            }
-            a.social-media-link:hover {
-                color: blue;
-            }
-        </style>
         <!--using font-awesome library to add buttons for the facebook and twitter social media links, this avoids the need for images for them-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <link rel="stylesheet" href="css/style.css">
 
     </head>
     <body>

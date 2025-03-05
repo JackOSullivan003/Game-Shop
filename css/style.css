@@ -1,0 +1,130 @@
+body {
+    background-color: grey;
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+}
+header {
+    background-color: lightgrey;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.ad-container img {
+    position: absolute; /* Stacks images on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Make images fill the container */
+    height: 100%;
+    object-fit: contain; /* Ensures images fit nicely */
+    opacity: 0; /* Hide images initially */
+    transition: opacity 1s ease-in-out;
+}
+.ad-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    height: 300px;
+    background-color: black;
+}
+
+.ad-container button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.product { 
+    display: inline-block;
+    justify-content: center;
+    background-color: white; 
+    margin: 20px; 
+    max-width: 200px;
+    max-height: 300px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    vertical-align: middle;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+}
+.products-section {
+    background-color: lightgrey; 
+}
+.product:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.product .product-details {
+    /*set maximum height for product descriptions*/
+    min-width: 150px;
+    min-height: 10px;
+    max-height: 80px;
+    max-width: 220px;
+    padding: 5px;
+    /*center in section*/
+    background-color: lightgrey;
+    display: inline-block;
+}
+.product img { 
+    width: 180px; 
+    height: 200px; 
+    padding: 10px;
+    object-fit: contain;
+    display: block;
+}
+.product h3 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+
+}
+.product p {
+    margin: 10px;
+    font-size: 16px;
+}
+
+footer {
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: center;
+}
+/*style for social media links*/
+a.social-media-link {
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 20px;
+}
+a.social-media-link:hover {
+    color: blue;
+}
