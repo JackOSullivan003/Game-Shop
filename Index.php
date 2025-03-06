@@ -43,13 +43,20 @@ if (mysqli_num_rows($adsResult) > 0) {
     }
 }
 
-echo json_encode($ads);
+// Check if random products are already stored in the session
+if (!isset($_SESSION['random_products'])) {
+    shuffle($products); // Shuffle the array
+    $_SESSION['random_products'] = array_slice($products, 0, 4); // Store 4 random products
+}
+
+$randomProducts = $_SESSION['random_products'];
 
 $conn->close();
 ?>
  
 <!DOCTYPE html>
 <html>
+    <!--include header.php file-->
 <?php include'Header.php';?>
 
     <section class="ad-container">
@@ -67,7 +74,7 @@ $conn->close();
     <section class= "products-section">
         <h2>Featured Products</h2>
         <!--displaying products stored in products variable using a PHP foreach loop-->
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($randomProducts as $product): ?>
             <div class="product">
                 <a href="product.php?id=<?= $product['product_id']; ?>" >
                 <img src="<?= $product['image_url']; ?>">

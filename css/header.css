@@ -1,0 +1,57 @@
+header {
+    background-color: lightgrey;
+    
+}
+.header {
+    display: flex;  /* Enables flexbox */
+    align-items: center; /* Centers content vertically */
+    padding: 10px;
+    /* Center aligns header text */
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+#title {
+    text-align: left;
+    padding: 10px;
+    width: 450px;
+    background: -webkit-linear-gradient(blue, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 5px rgba(0, 0, 0, 0.1);
+    /*allow search bar to be on same line*/
+    white-space: nowrap; /* Prevents title from wrapping */
+    
+    
+    
+}
+
+.search-bar-container {
+    flex-grow: 1; /* Allows search bar to take available space */
+    display: flex; /* Enables flexbox inside */
+    margin-left: 5px; /* Adds spacing between title and search bar */
+
+
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 500px;
+    margin-right: 10px;
+
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
