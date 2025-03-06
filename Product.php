@@ -41,23 +41,7 @@ if ($id != 0) {
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Game & Shop</title> 
-        <!--using font-awesome library to add buttons for the facebook and twitter social media links, this avoids the need for images for them-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/style.css">
-
-    </head>
-    <body>
-    <header>
-
-        <h1>Welcome to Game & Stop</h1>
-        <!--basic nav-bar -->
-        <nav>
-            <a href="index.php">Home</a> | 
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+    <?php include 'Header.php'; ?>
     
         <!--section for products display-->
     <section class= "products-section">
