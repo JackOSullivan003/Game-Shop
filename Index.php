@@ -3,8 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "games_shop";
+
+session_start();
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -50,7 +52,7 @@ $conn->close();
 <html>
     <head>
         <title>Game & Shop</title> 
-        <!--using font-awesome library to add buttons for the facebook and twitter social media links, this avoids the need for images for them-->
+        <!--using font-awesome library for some aspects of the website-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/style.css">
 
