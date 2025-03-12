@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "shop";
+$password = "shop";
 $dbname = "games_shop";
 
 session_start();
@@ -31,33 +31,26 @@ if (mysqli_num_rows($productResult) > 0) {
     }
 }
 
-$adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
+// $adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
 
-$adsResult = mysqli_query($conn, $adsRequest);
-//create array of ads from database
+// $adsResult = mysqli_query($conn, $adsRequest);
+// //create array of ads from database
 
-$ads = [];
-if (mysqli_num_rows($adsResult) > 0) {
-    while($row = mysqli_fetch_assoc($adsResult)) {
-        $ads[] = $row;
-    }
-}
+// $ads = [];
+// if (mysqli_num_rows($adsResult) > 0) {
+//     while($row = mysqli_fetch_assoc($adsResult)) {
+//         $ads[] = $row;
+//     }
+// }
 
-// Check if random products are already stored in the session
-if (!isset($_SESSION['random_products'])) {
-    shuffle($products); // Shuffle the array
-    $_SESSION['random_products'] = array_slice($products, 0, 4); // Store 4 random products
-}
-
-$randomProducts = $_SESSION['random_products'];
+// echo json_encode($ads);
 
 $conn->close();
 ?>
  
 <!DOCTYPE html>
 <html>
-    <!--include header.php file-->
-<?php include'Header.php';?>
+    <?php include'Header.php';?>
 
     <section class="ad-container">
         <div class="slider">
@@ -74,7 +67,7 @@ $conn->close();
     <section class= "products-section">
         <h2>Featured Products</h2>
         <!--displaying products stored in products variable using a PHP foreach loop-->
-        <?php foreach ($randomProducts as $product): ?>
+        <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="product.php?id=<?= $product['product_id']; ?>" >
                 <img src="<?= $product['image_url']; ?>">
