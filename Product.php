@@ -1,10 +1,5 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "games_shop";
-
+include 'Connection.php';
 
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -12,7 +7,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Get product ID from URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
-$productRequest = "SELECT p.product_id, p.product_name, p.description, p.price, i.image_url FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id WHERE p.product_id = $id";
+$productRequest = "SELECT product_id, product_name, description, price FROM Products WHERE product_id = $id";
 
 $productResult = mysqli_query($conn, $productRequest);
 
@@ -49,7 +44,7 @@ if ($id != 0) {
         <!--displaying products stored in products variable using a PHP foreach loop-->
         <div class= "product">
         <?php if ($product): ?>
-            <img src="<?= $product['image_url']; ?>" alt="<?= $product['product_name']; ?>">
+            <img src="display_image.php?image_id=<?= $product['product_id']; ?>">
             <h1><?php echo htmlspecialchars($product['product_name']); ?></h1>
             <p>Price: $<?php echo $product['price']; ?></p>
             <p><?php echo htmlspecialchars($product['description']); ?></p>

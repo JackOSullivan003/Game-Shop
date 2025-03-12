@@ -1,10 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$servername = "localhost";
-$username = "shop";
-$password = "shop";
-$dbname = "games_shop";
+include "Connection.php";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -25,7 +20,7 @@ if (isset($_GET["image_id"])) {
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($imageData);
         $stmt->fetch();
-        
+
         echo $imageData;
     } else {
         echo "Image not found.";

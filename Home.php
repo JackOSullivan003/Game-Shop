@@ -1,10 +1,6 @@
+<!DOCTYPE html>
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$servername = "localhost";
-$username = "shop";
-$password = "shop";
-$dbname = "games_shop";
+include 'Connection.php';
 
 session_start();
 
@@ -48,10 +44,8 @@ if (mysqli_num_rows($adsResult) > 0) {
 $conn->close();
 ?>
  
-<!DOCTYPE html>
 <html>
     <?php include'Header.php';?>
-
     <section class="ad-container">
         <div class="slider">
             <?php foreach ($ads as $ad): ?>
@@ -80,15 +74,10 @@ $conn->close();
         <?php endforeach; ?>
     </section>
 
-
     <footer>
         <p>&copy; 2025 Game & Stop</p>
         <!--add social media links-->
         <a class="social-media-link" href="#"><i class="fa fa-facebook"></i></a>
         <a class="social-media-link" href="#"><i class="fa fa-twitter"></i></a>
     </footer>
-    </footer>
-
-
-    </body>
 </html>
