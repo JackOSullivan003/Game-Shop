@@ -17,7 +17,7 @@ else {
     echo "Connection successful.";
 }
 
-$productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_url FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
+$productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
 
 
 $productResult = mysqli_query($conn, $productRequest);
@@ -31,17 +31,17 @@ if (mysqli_num_rows($productResult) > 0) {
     }
 }
 
-// $adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
+$adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
 
-// $adsResult = mysqli_query($conn, $adsRequest);
-// //create array of ads from database
+$adsResult = mysqli_query($conn, $adsRequest);
+//create array of ads from database
 
-// $ads = [];
-// if (mysqli_num_rows($adsResult) > 0) {
-//     while($row = mysqli_fetch_assoc($adsResult)) {
-//         $ads[] = $row;
-//     }
-// }
+$ads = [];
+if (mysqli_num_rows($adsResult) > 0) {
+    while($row = mysqli_fetch_assoc($adsResult)) {
+        $ads[] = $row;
+    }
+}
 
 // echo json_encode($ads);
 
@@ -55,7 +55,7 @@ $conn->close();
     <section class="ad-container">
         <div class="slider">
             <?php foreach ($ads as $ad): ?>
-                <img src="<?= $ad['image_url']; ?>" class='ad' alt="Advertisement">
+                <img src="display_image.php?image_id=<?=$ad['image_id'] ?>" class='ad' alt="Advertisement">
                 <?php endforeach; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -70,7 +70,7 @@ $conn->close();
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="product.php?id=<?= $product['product_id']; ?>" >
-                <img src="<?= $product['image_url']; ?>">
+                <img src="display_image.php?image_id=<?= $product['image_id']; ?>">
                 <div class="product-details">
                     <h3><?= $product['product_name']; ?></h3>
                     <p>Price: <?= $product['price']; ?></p>

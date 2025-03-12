@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 $servername = "localhost";
 $username = "shop";
 $password = "shop";
@@ -15,21 +17,19 @@ if ($conn->connect_error) {
 if (isset($_GET["image_id"])) {
     $image_id = intval($_GET["image_id"]);
 
-    $imageRequest = "SELECT image_data FROM Images WHERE $image_id = image_id";
+    $stmt = $conn->prepare("SELECT image_data FROM Images WHERE image_id = ?");
+    $stmt->bind_param("i", $image_id);
+    $stmt->execute();
+    $stmt->store_result();
 
-
-    $imageResult = mysqli_query($conn, $imageRequest);
-
-    if ($imageResult->num_rows > 0) {
-        $imageResult.bind_result($imageData, $imageType);
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($imageData);
+        $stmt->fetch();
         
-        header("Content-Type: " . $imageType);
         echo $imageData;
     } else {
         echo "Image not found.";
     }
-
-    $stmt->close();
 }
 
 $conn->close();
