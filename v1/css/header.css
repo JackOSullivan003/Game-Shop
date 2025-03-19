@@ -1,3 +1,7 @@
+header{
+    background-color: lightgray;
+}
+
 .header {
     display: flex;  /* Enables flexbox */
     align-items: center; /* Centers content vertically */
