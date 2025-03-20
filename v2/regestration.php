@@ -2,6 +2,8 @@
 $logins = [
     ["Username" => "enter username:", "Password" => "enter password:"]
 ];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -70,16 +72,9 @@ $logins = [
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-    <header>
-        <h1>Welcome to Game & Stop</h1>
-        <nav>
-            <a href="index.php">Home</a> | 
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+    <?php include "header.php"; ?>
     
     <section class="login">
-        <h2>Welcome</h2>
         <h2>Sign in to Game & Stop</h2>
         <br>
         <?php foreach ($logins as $login): ?>

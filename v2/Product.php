@@ -37,7 +37,7 @@ if ($id != 0) {
 <!DOCTYPE html>
 <html>
     <?php include 'Header.php'; ?>
-    
+    <link rel="stylesheet" href="css/product.css" type="text/css">
         <!--section for products display-->
     <section class= "products-section">
        
@@ -47,7 +47,10 @@ if ($id != 0) {
             <img src="display_image.php?image_id=<?= $product['product_id']; ?>">
             <h1><?php echo htmlspecialchars($product['product_name']); ?></h1>
             <p>Price: $<?php echo $product['price']; ?></p>
+            <div class="product-details">
             <p><?php echo htmlspecialchars($product['description']); ?></p>
+            </div>
+            <button class="buy-button">Buy Now</button>
         <?php else: ?>
             <p>Product not found.</p>
         <?php endif; ?>

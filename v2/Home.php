@@ -13,7 +13,6 @@ if (!$conn) {
 
 $productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
 
-
 $productResult = mysqli_query($conn, $productRequest);
 
 //create array of products from database 
@@ -44,6 +43,7 @@ $conn->close();
  
 <html>
     <?php include'Header.php';?>
+    <link rel="stylesheet" href="css/Home.css" type="text/css">
     <section class="ad-container">
         <div class="slider">
             <?php foreach ($ads as $ad): ?>
@@ -64,8 +64,8 @@ $conn->close();
                 <a href="product.php?id=<?= $product['product_id']; ?>" >
                 <img src="display_image.php?image_id=<?= $product['image_id']; ?>">
                 <div class="product-details">
-                    <h3><?= $product['product_name']; ?></h3>
-                    <p>Price: <?= $product['price']; ?></p>
+                    <h3 class ="product-title"><?= $product['product_name']; ?></h3>
+                    <p class="product-price">Price: <?= $product['price']; ?></p>
                 </div>
                 </a>
             </div>
