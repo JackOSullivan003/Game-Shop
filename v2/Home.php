@@ -2,16 +2,15 @@
 <?php
 include 'Connection.php';
 
+
+
+//get conn from Connection.php as a variable 
+$conn = Connection::getConnection();
+
 session_start();
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$conn) {
-    die("Connection failed: ". mysqli_connect_error());
-}
-
-
 $productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
+
 
 $productResult = mysqli_query($conn, $productRequest);
 

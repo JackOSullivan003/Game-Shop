@@ -2,7 +2,9 @@
 include 'Connection.php';
 
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+//get conn from Connection.php as a variable 
+$conn = Connection::getConnection();
 
 // Get product ID from URL
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
