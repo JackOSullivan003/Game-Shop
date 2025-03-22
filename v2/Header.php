@@ -14,7 +14,19 @@
                 <input type="text" class="search-bar" id="search" onkeyup="searchItems()" placeholder="Search items...">
                 <i class="fa fa-search fa-1x"></i>
             </div>
-            <i class="fa fa-user fa-lg"></i>
+
+        <!-- Cart -->
+        <div class="icon-container">    
+            <a href="Cart.php">
+                <i id="cart-icon" class="fa fa-shopping-cart"></i>
+                <span id="cartCount">0</span>
+            </a>
+            
+            <!--User--> 
+            <a href="User.php">
+                <i class="fa fa-user fa-lg"></i>
+            </a>
+        </div>
         </div>
         <!--basic nav-bar -->
         <nav>
