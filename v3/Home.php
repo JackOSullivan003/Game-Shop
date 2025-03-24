@@ -1,6 +1,5 @@
 <?php
 require_once 'classes/User.php'; // Load the User class
-session_start();
 
 
 include 'util/Connection.php';
@@ -8,6 +7,7 @@ include 'util/Connection.php';
 $conn = Connection::getConnection();
 
 //if user is logged in, set the user in session
+session_start();
 
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
@@ -35,6 +35,8 @@ if (mysqli_num_rows($productResult) > 0) {
     }
 }
 
+//echo json_encode($products);
+
 $adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
 
 $adsResult = mysqli_query($conn, $adsRequest);
@@ -47,7 +49,7 @@ if (mysqli_num_rows($adsResult) > 0) {
     }
 }
 
-//echo json_encode($ads);
+echo json_encode($ads);
 
 //close connection
 $conn->close();
@@ -61,7 +63,7 @@ $conn->close();
     <section class="ad-container">
         <div class="slider">
             <?php foreach ($ads as $ad): ?>
-                <img src="display_image.php?image_id=<?=$ad['image_id'] ?>" class='ad' alt="Advertisement">
+                <img src="util/display_image.php?image_id=<?=$ad['image_id'] ?>" class='ad' alt="Advertisement">
                 <?php endforeach; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -75,8 +77,8 @@ $conn->close();
         <!--displaying products stored in products variable using a PHP foreach loop-->
         <?php foreach ($products as $product): ?>
             <div class="product">
-                <a href="product.php?id=<?= $product['product_id']; ?>" >
-                <img src="display_image.php?image_id=<?= $product['image_id']; ?>">
+                <a href="ProductPage.php?id=<?= $product['product_id']; ?>" >
+                <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
                 <div class="product-details">
                     <h3 class ="product-title"><?= $product['product_name']; ?></h3>
                     <p class="product-price">Price: <?= $product['price']; ?></p>

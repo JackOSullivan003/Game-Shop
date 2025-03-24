@@ -17,9 +17,10 @@
 
         <!-- Cart -->
         <div class="icon-container">    
-            <a href="Cart.php">
+
+            <a href="CartPage.php">
                 <i id="cart-icon" class="fa fa-shopping-cart"></i>
-                <span id="cartCount">0</span>
+                <span id="cartCount"><?php echo isset($_SESSION['cart'])? count($_SESSION['cart']) : 0; ?></span>
             </a>
             
             <!--User--> 

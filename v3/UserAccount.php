@@ -12,16 +12,15 @@ echo "Full Name: " . $user->getFullName() . "<br>";
 echo "address: " . $user->getAddress() . "<br>";
 echo "Phone: " . $user->getPhoneNo() . "<br>";
 
-//function for logout of user
-function logout() {
-  session_destroy();  // Destroy session
-  header("Location: Home.php"); // Redirect to home
-  exit();
-}
-
 // Check if the logout action is triggered
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-  logout();
+  session_start();
+  $cart = $_SESSION['cart'] ?? []; // Save cart before destroying session
+  session_destroy();
+  session_start();
+  $_SESSION['cart'] = $cart; // Restore cart after logout
+  header("Location: home.php");
+  exit();
 }
 ?>
 
@@ -44,12 +43,12 @@ function logoutUser() {
   <h1>User Account Details</h1>
 <!--basic user management, update username, logout option -->
 
-<a href="logout()">Update User</a>
-<!--logout user through php logout() and load back to home.php-->
+<a href="">Update User</a>
 
+<!--logout user through php logout() and load back to home.php-->
 <a href="#" onclick="logoutUser()">Logout</a>
- <!-- add more functionalities as needed -->
+
  <a href="Home.php">Home</a>
- <!-- end of user management -->
+
 </body>
 </html>
