@@ -12,7 +12,7 @@ session_start();
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     //echo user name 
-    echo '<p>Hello, '. $user->username. '</p>';
+    echo '<p>Hello, '. $user->getUsername(). '</p>';
     
 }
 else {
@@ -27,7 +27,6 @@ $productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM
 $productResult = mysqli_query($conn, $productRequest);
 
 //create array of products from database 
-
 $products = [];
 if (mysqli_num_rows($productResult) > 0) {
     while($row = mysqli_fetch_assoc($productResult)) {
@@ -78,7 +77,7 @@ $conn->close();
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="ProductPage.php?id=<?= $product['product_id']; ?>" >
-                <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
+                <img src="util/display_image.php?image_id=<?= $product['i.image_id']; ?>">
                 <div class="product-details">
                     <h3 class ="product-title"><?= $product['product_name']; ?></h3>
                     <p class="product-price">Price: <?= $product['price']; ?></p>

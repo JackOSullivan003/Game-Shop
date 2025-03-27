@@ -34,23 +34,15 @@ if (mysqli_num_rows($userResult) > 0) {
     $phoneNo = $_POST['phoneNo'];
     //prepare values for inserting into database
     //mysqli_real_escape_string is used to prevent SQL injection attacks and make sure the string is properly inserted
-
-    $username = mysqli_real_escape_string($conn, $userName);
-    $email = mysqli_real_escape_string($conn, $email);
-    $fullName = mysqli_real_escape_string($conn, $fullName);
-    $address = mysqli_real_escape_string($conn, $address);
-    $phoneNo = mysqli_real_escape_string($conn, $phoneNo);
-    $isAdmin = mysqli_real_escape_string($conn, $isAdmin);
     
-    $sql = "INSERT INTO Users (username, email, password_hash, full_name, address, phone_number) VALUES ('$username', '$email', '$password', '$fullName', '$address', '$phoneNo')";
-
-
+    
+    $user = new User($conn, $username, $email, $password, $fullName, $address, $phoneNo);
+    
     if (mysqli_query($conn, $sql)) {
-
+        
         echo "User registered successfully.";
         //login user
         //create user object
-        $user = new User($username, $email, $password, $fullName, $address, $phoneNo);
         //save user object in session
         $user->login();
 

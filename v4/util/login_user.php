@@ -17,7 +17,7 @@ if(mysqli_num_rows($result) > 0){ //if user exists, check password
     $password = $_POST['password'];
     if(password_verify($password, $hashedPassword)){
         //create user object and log them in
-        $user = new User($row['username'], $row['password_hash'], $row['email'], $row['full_name'], $row['address'], $row['phone_number']);
+        $user = new User($conn, $row['username'], $row['password_hash'], $row['email'], $row['full_name'], $row['address'], $row['phone_number']);
         
         $user->login();
         //echo session user info and redirect to home page after 3 seconds

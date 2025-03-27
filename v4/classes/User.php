@@ -1,13 +1,24 @@
-<?php class User {
-    public $username; 
-    public $password;
-    public $email;
-    public $fullName;
-    public $address;
-    public $phoneNo;
+<?php 
+
+class User {
+    private $username; 
+    private $password;
+    private $email;
+    private $fullName;
+    private $address;
+    private $phoneNo;
 
     // Constructor
-    public function __construct($username, $password, $email, $fullName, $address, $phoneNo) {
+    public function __construct($conn, $username, $password, $email, $fullName, $address, $phoneNo) {
+
+        $username = mysqli_real_escape_string($conn, $username);
+        $email = mysqli_real_escape_string($conn, $email);
+        $fullName = mysqli_real_escape_string($conn, $fullName);
+        $address = mysqli_real_escape_string($conn, $address);
+        $phoneNo = mysqli_real_escape_string($conn, $phoneNo);
+
+        $sql = "INSERT INTO Users (username, email, password_hash, full_name, address, phone_number) VALUES ('$username', '$email', '$password', '$fullName', '$address', '$phoneNo')";
+
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;

@@ -1,9 +1,9 @@
 <?php class Product {
-    public $id; 
-    public $title; 
-    public $description;
-    public $price;
-    public $image;
+    private $id; 
+    private $title; 
+    private $description;
+    private $price;
+    private $image;
 
 
     public function __construct($id, $title, $description, $price, $image) {
@@ -13,8 +13,51 @@
         $this->price = $price;
         $this->image = $image;
     }
-    // Other methods for product operations (e.g., add to cart, remove from cart, etc.)
-    // ...
+
+    // Getters and setters for product properties
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
+    }
+
+
+    
 }
 
 ?>

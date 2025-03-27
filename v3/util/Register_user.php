@@ -40,7 +40,6 @@ if (mysqli_num_rows($userResult) > 0) {
     $fullName = mysqli_real_escape_string($conn, $fullName);
     $address = mysqli_real_escape_string($conn, $address);
     $phoneNo = mysqli_real_escape_string($conn, $phoneNo);
-    $isAdmin = mysqli_real_escape_string($conn, $isAdmin);
     
     $sql = "INSERT INTO Users (username, email, password_hash, full_name, address, phone_number) VALUES ('$username', '$email', '$password', '$fullName', '$address', '$phoneNo')";
 
