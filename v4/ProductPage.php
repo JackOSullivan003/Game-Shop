@@ -77,13 +77,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'addtocart') {
             qtyinput = document.getElementById('quantity');
             let quantity = qtyinput.value;
             fetch(`?action=addtocart&id=${productId}&quantity=${quantity}`)
-            .then(response => {
-                // Log the entire response for debugging purposes
-                console.log("Response from PHP:", response);
-
-                // Check if response is valid JSON
-                return response.json();
-            })
+            .then(response => response.json();)
             .then(data => {
                 console.log("Data from PHP:", data);  // Log the parsed response data
 
