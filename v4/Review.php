@@ -31,7 +31,12 @@ if (mysqli_num_rows($reviewResult) > 0) {
     <section class="review-section">
         <h3>Game Reviews</h3>
         <div class="reviews-container">
-            <?php foreach ($reviews as $review): ?>
+            <?php 
+            if (empty($reviews)) {
+                echo "<p>No one has reviewed this item yet.</p>";
+              }
+            else{
+            foreach ($reviews as $review): ?>
                 <div class="review">
                 <p><strong>User: </strong><?= $review['username'];?><br>
                 <strong>Review Date: </strong><?= $review['created_at'];?><br>
@@ -41,7 +46,8 @@ if (mysqli_num_rows($reviewResult) > 0) {
                 <?php endfor;?>
                 <p><?= $review['comment'];?></p>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            }?>
         </div>
     </section>
 
