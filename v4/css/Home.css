@@ -142,3 +142,57 @@ a.social-media-link {
 a.social-media-link:hover {
     color: blue;
 }
+
+@media (max-width: 768px) {
+    body {
+        margin: 5px;
+        border-radius: 5px;
+    }
+
+    .ad-container {
+        height: 200px;
+    }
+
+    .ad-container button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .product {
+        display: block;
+        max-width: 90%;
+        margin: 15px auto;
+    }
+
+    .product img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product .product-details {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .product h3 {
+        font-size: 18px;
+    }
+
+    .product p {
+        font-size: 14px;
+    }
+
+    .products-section h2 {
+        font-size: 20px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    a.social-media-link {
+        font-size: 18px;
+        display: inline-block;
+        margin: 5px;
+    }
+}
