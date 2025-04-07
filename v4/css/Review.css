@@ -45,9 +45,23 @@ nav {
     border-radius: 5px; 
     cursor: pointer; 
 }
-.checked { 
-    color: orange; 
-}
-.stars { 
+.star { 
     cursor: pointer; 
+}
+
+.star:hover {
+    color: gold;
+}
+
+.checked  { 
+    color: gold; 
+}
+
+.login-button {
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
 }

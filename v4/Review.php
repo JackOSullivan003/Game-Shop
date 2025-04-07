@@ -4,7 +4,6 @@ $reviewRequest = "SELECT r.user_id, r.rating, r.comment, r.created_at, u.usernam
 $reviewResult = mysqli_query($conn, $reviewRequest);
 
 //get reviews from database
-
 $reviews = [];
 if (mysqli_num_rows($reviewResult) > 0) {
     while($row = mysqli_fetch_assoc($reviewResult)) {
@@ -15,16 +14,18 @@ if (mysqli_num_rows($reviewResult) > 0) {
 }
 
 
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
-    <script> 
-        function selectRating(rating) {
-            document.getElementByClassName('stars').
-        }
-    </script>
+    
     <link rel="stylesheet" href="css/Review.css" type="text/css">
+    <script>
+        const isLoggedIn = <?php echo (isset($_SESSION['user']) && $_SESSION['user'] != null) ? 'true' : 'false'; ?>;
+    </script>
+    <script src="js/Review.js"></script>
     <body>
 
     <!-- Reviews Section -->
@@ -54,17 +55,20 @@ if (mysqli_num_rows($reviewResult) > 0) {
     <!-- Submit Review Section -->
     <section class="review-section">
         <h3>Submit Your Review</h3>
+        <!-- Star Rating Input -->
+        <div class="rating">
+            <!-- Stars to click for rating -->
+             <span class="fa fa-star star" onclick="selectRating(1)"></span>
+            <span class="fa fa-star star" onclick="selectRating(2)"></span>
+            <span class="fa fa-star star" onclick="selectRating(3)"></span>
+            <span class="fa fa-star star" onclick="selectRating(4)"></span>
+            <span class="fa fa-star star" onclick="selectRating(5)"></span>
+             
+        </div>
+
         <form action="reviews.php?id=<?= $id; ?>" method="post" class="review-form">
-            <textarea name="review_text" required placeholder="Write your review here..."></textarea><br>
-
-            <!-- Star Rating Input -->
-            <div class="stars">
-                <!-- Stars to click for rating -->
-                 
-            </div>
-            <!-- Hidden input to store the selected rating -->
             <input type="hidden" name="rating" id="rating" value="0">
-
+            <textarea name="review-text" required id="review-text" placeholder="Write your review here..."></textarea><br>
             <input type="submit" name="review" value="Submit Review">
         </form>
     </section>

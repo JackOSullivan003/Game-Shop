@@ -33,7 +33,7 @@ class User {
         //get current session and set user variable 
         session_start();
         $_SESSION['user'] = $this;
-        echo "user set in session";
+        echo "user set in session\n";
         return true;
     }
 

@@ -22,7 +22,7 @@ if(mysqli_num_rows($result) > 0){ //if user exists, check password
         $user->login();
         //echo session user info and redirect to home page after 3 seconds
         header("refresh:3; url=../home.php");
-        echo "Logged in successfully. welcome " . $_SESSION['user']->username. "! redirectiong to home page...";
+        echo "Logged in successfully. welcome " . $_SESSION['user']->getUsername(). "! redirectiong to home page...";
     }
     else {
         echo "Invalid username or password";
