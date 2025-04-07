@@ -38,14 +38,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'addtocart') {
     }
 
     if ($product) {
-        $productId = $product['product_id'];
 
         // Check if item is already in cart
-        if (isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId]['quantity'] += $quantity;
+        if (isset($_SESSION['cart'][$product_id])) {
+            $_SESSION['cart'][$product_id]['quantity'] += $quantity;
         } else {
-            $_SESSION['cart'][$productId] = [
-                'id' => $product['product_id'],
+            $_SESSION['cart'][$product_id] = [
+                'id' => $product_id,
                 'title' => $product['product_name'],
                 'price' => $product['price'],
                 'quantity' => $quantity

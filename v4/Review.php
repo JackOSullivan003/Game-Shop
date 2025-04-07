@@ -14,7 +14,30 @@ if (mysqli_num_rows($reviewResult) > 0) {
 }
 
 
+// Check if data exists in $_POST
+if (isset($_POST['review_text']) && isset($_POST['rating']) && isset($_POST['product_id']) && isset($_SESSION['user_id'])) {
+    $reviewText = $_POST['review_text'];
+    $rating = $_POST['rating'];
+    $productId = $_POST['product_id'];
+    $userId = $_SESSION['user_id'];
 
+
+    // Validate input: Ensure review_text is not empty
+    if (!empty($reviewText) && $productId) {
+        // Escape for safety
+        $escapedReview = mysqli_real_escape_string($conn, $reviewText);
+        $safeReview = htmlspecialchars($escapedReview, ENT_QUOTES, 'UTF-8'); // Prevent XSS
+
+        $query = "INSERT INTO reviews (product_id, user_id, review_text, created_at) VALUES ($id, $userId, $safeReview, NOW())";
+
+        if(mysqli_query($conn, $query)) {
+            echo "Review submitted successfully!";
+        }
+        else {
+            echo "Error submitting review!";
+        }
+    }
+}
 
 ?>
 
@@ -24,6 +47,7 @@ if (mysqli_num_rows($reviewResult) > 0) {
     <link rel="stylesheet" href="css/Review.css" type="text/css">
     <script>
         const isLoggedIn = <?php echo (isset($_SESSION['user']) && $_SESSION['user'] != null) ? 'true' : 'false'; ?>;
+        const product_id = <?= json_encode($id) ?>;
     </script>
     <script src="js/Review.js"></script>
     <body>
@@ -66,7 +90,7 @@ if (mysqli_num_rows($reviewResult) > 0) {
              
         </div>
 
-        <form action="reviews.php?id=<?= $id; ?>" method="post" class="review-form">
+        <form action="Review.php?id=<?= $id; ?>" method="post" id="review-form" class="review-form">
             <input type="hidden" name="rating" id="rating" value="0">
             <textarea name="review-text" required id="review-text" placeholder="Write your review here..."></textarea><br>
             <input type="submit" name="review" value="Submit Review">

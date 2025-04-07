@@ -1,15 +1,17 @@
 <?php 
 
 class User {
+    private $id;
     private $username; 
     private $password;
     private $email;
     private $fullName;
     private $address;
     private $phoneNo;
+    private $id;
 
     // Constructor
-    public function __construct($conn, $username, $password, $email, $fullName, $address, $phoneNo) {
+    public function __construct($conn, $id, $username, $password, $email, $fullName, $address, $phoneNo) {
 
         $username = mysqli_real_escape_string($conn, $username);
         $email = mysqli_real_escape_string($conn, $email);
@@ -19,6 +21,8 @@ class User {
 
         $sql = "INSERT INTO Users (username, email, password_hash, full_name, address, phone_number) VALUES ('$username', '$email', '$password', '$fullName', '$address', '$phoneNo')";
 
+        //get Id for user
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
@@ -33,6 +37,7 @@ class User {
         //get current session and set user variable 
         session_start();
         $_SESSION['user'] = $this;
+        $_SESSION['user_id'] = $this->getId();
         echo "user set in session\n";
         return true;
     }
@@ -43,6 +48,10 @@ class User {
         return true;
     }
 
+
+    public function getId() {
+        return $this->id;
+    }
     //basic getter methods
     public function getUsername() {
         return $this->username;
@@ -64,6 +73,10 @@ class User {
     }
     
     //basic setter methods
+    public function setId($id) {
+        $this->id = $id;
+
+    }
     public function setUsername($username) {
         $this->username = $username;
     }

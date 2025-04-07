@@ -6,12 +6,9 @@ include '../classes/User.php';
 $conn = Connection::getConnection();
 
 
-// check if user already exists by using post variables in sql query 
 $email = $_POST['email'];
-
-$userResult = "SELECT * FROM users WHERE email = '$email'";
-
-$userResult = mysqli_query($conn, $userResult);
+$emailSafe = mysqli_real_escape_string($conn, $email);
+$userResult = mysqli_query($conn, "SELECT * FROM users WHERE email = '$emailSafe'");
 
 // Check if result contains any row (i.e., user exists)
 
@@ -21,11 +18,11 @@ if (mysqli_num_rows($userResult) > 0) {
     
     //delay 3 seconds before redirecting to home page
     header('refresh:3; url=../home.php');
+    exit();
     
 } else {
     
     // If user doesn't exist, insert user into database
-    
     $userName = $_POST['username']; 
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $fullName = $_POST['fullName'];
@@ -35,17 +32,14 @@ if (mysqli_num_rows($userResult) > 0) {
     //prepare values for inserting into database
     //mysqli_real_escape_string is used to prevent SQL injection attacks and make sure the string is properly inserted
     
-    
-    $user = new User($conn, $username, $email, $password, $fullName, $address, $phoneNo);
+    $user = new User($conn, null, $username, $email, $password, $fullName, $address, $phoneNo);
     
     if (mysqli_query($conn, $sql)) {
-        
+        $userId = mysqli_insert_id($conn); 
         echo "User registered successfully.";
-        //login user
-        //create user object
         //save user object in session
+        $user->setId($userId);
         $user->login();
-
         //redirect to home page
         header("refresh:2; url=../home.php");
 
@@ -56,8 +50,5 @@ if (mysqli_num_rows($userResult) > 0) {
     }
 
 }
-
-
-
 
 ?>
