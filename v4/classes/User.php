@@ -8,7 +8,6 @@ class User {
     private $fullName;
     private $address;
     private $phoneNo;
-    private $id;
 
     // Constructor
     public function __construct($conn, $id, $username, $password, $email, $fullName, $address, $phoneNo) {
