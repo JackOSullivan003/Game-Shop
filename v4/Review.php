@@ -15,7 +15,7 @@ if (mysqli_num_rows($reviewResult) > 0) {
 
 
 // Check if data exists in $_POST
-if (isset($_POST['review_text']) && isset($_POST['rating']) && isset($_POST['product_id']) && isset($_SESSION['user_id'])) {
+if (isset($_POST['review_text']) && isset($_POST['rating']) && isset($id) && isset($_SESSION['user_id'])) {
     $reviewText = $_POST['review_text'];
     $rating = $_POST['rating'];
     $productId = $_POST['product_id'];
@@ -90,7 +90,7 @@ if (isset($_POST['review_text']) && isset($_POST['rating']) && isset($_POST['pro
              
         </div>
 
-        <form action="Review.php?id=<?= $id; ?>" method="post" id="review-form" class="review-form">
+        <form action="ProductPage.php?id=<?= $id; ?>" method="post" id="review-form" class="review-form">
             <input type="hidden" name="rating" id="rating" value="0">
             <textarea name="review-text" required id="review-text" placeholder="Write your review here..."></textarea><br>
             <input type="submit" name="review" value="Submit Review">

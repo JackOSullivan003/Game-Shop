@@ -77,7 +77,7 @@ $conn->close();
         <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="ProductPage.php?id=<?= $product['product_id']; ?>" >
-                <img src="util/display_image.php?image_id=<?= $product['i.image_id']; ?>">
+                <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
                 <div class="product-details">
                     <h3 class ="product-title"><?= $product['product_name']; ?></h3>
                     <p class="product-price">Price: <?= $product['price']; ?></p>

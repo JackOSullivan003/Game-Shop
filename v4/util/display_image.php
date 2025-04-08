@@ -10,6 +10,8 @@ if ($conn->connect_error) {
 }
 
 if (isset($_GET["image_id"])) {
+    
+    
     $image_id = intval($_GET["image_id"]);
 
     $stmt = $conn->prepare("SELECT image_data FROM Images WHERE image_id = ?");
