@@ -46,11 +46,10 @@ class User {
         unset($_SESSION['user']);
         return true;
     }
-
-
     public function getId() {
         return $this->id;
     }
+    
     //basic getter methods
     public function getUsername() {
         return $this->username;
@@ -70,11 +69,10 @@ class User {
     public function getPhoneNo() {
         return $this->phoneNo;
     }
-    
+
     //basic setter methods
     public function setId($id) {
         $this->id = $id;
-
     }
     public function setUsername($username) {
         $this->username = $username;
@@ -94,8 +92,6 @@ class User {
     public function setPhoneNo($phoneNo) {
         $this->phoneNo = $phoneNo;
     }
-
-
 
 }
 

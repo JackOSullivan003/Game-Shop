@@ -1,38 +1,54 @@
-<?php
+<?php 
+include 'Product.php';
 
-class Cart
-{
+class Cart {
     private $items = [];
+    public function __construct() {
+        // Ensure session cart exists and is an array
+        if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+        $this->items = $_SESSION['cart'];
+    }
 
-    public function addItem($id, $name, $type, $price, $quantity = 1)
-    {
-        if (isset($this->items[$id])) {
-            $this->items[$id]['quantity'] += $quantity;
+    public function addProduct($product, $quantity = 1) {
+        $productId = $product['product_id'];
+
+        if (isset($this->items[$productId])) {
+            $this->items[$productId]['quantity'] += $quantity;
         } else {
-            $this->items[$id] = [
-            'id'       => $id,
-            'name'     => $name,
-            'type'     => $type, 
-            'price'    => $price,
-            'quantity' => $quantity
+            $this->items[$productId] = [
+                'id' => $product['product_id'],
+                'title' => $product['product_name'],
+                'price' => $product['price'],
+                'quantity' => $quantity
             ];
         }
+
+        $_SESSION['cart'] = $this->items; // Save items to session
+        $this->getTotalPrice();
     }
 
-    public function removeItem($id)
-    {
-        unset($this->items[$id]);
-    }
-
-    public function updateItem($id, $quantity)
-    {
-        if (isset($this->items[$id])) {
-            $this->items[$id]['quantity'] = $quantity;
+    public function removeProduct($product) {
+        $productId = $product['product_id'];
+        if (isset($this->items[$productId])) {
+            unset($this->items[$productId]);
         }
+
+        $_SESSION['cart'] = $this->items; // Update session
+        //calculate total price 
+        $this->getTotalPrice();
     }
 
-    public function getItems()
-    {
+    public function getTotalPrice() {
+        $total = 0;
+        foreach ($this->items as $item) {
+            $total += $item['price'] * $item['quantity'];
+        }
+        return $total; 
+    }
+
+    public function getCartItems() {
         return $this->items;
     }
 
@@ -41,3 +57,5 @@ class Cart
         $this->items = [];
     }
 }
+
+?>

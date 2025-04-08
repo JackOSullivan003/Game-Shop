@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'Cart.php';
+include 'classes/Cart.php';
 
 //handle removeFromCart response 
 

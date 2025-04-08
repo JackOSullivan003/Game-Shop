@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'util/Connection.php';
-include 'Cart.php';
+include 'classes/Cart.php';
 
 // Get database connection
 $conn = Connection::getConnection();

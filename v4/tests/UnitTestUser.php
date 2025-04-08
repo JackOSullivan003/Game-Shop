@@ -1,7 +1,7 @@
 <?php
 require_once "../classes/User.php"; // Ensure the correct path to your User class
 
-require_once "./Connection.php"; 
+require_once "../util/Connection.php"; 
 
 $conn = Connection::getConnection();
 
@@ -17,7 +17,7 @@ function assertEquals($expected, $actual, $message) {
 }
 
 //create new user and test getters and setters 
-$user = new User($conn, "testuser", "password123", "test@example.com", "Test User", "123 Test St", "1234567890");
+$user = new User($conn, null, "testuser", "password123", "test@example.com", "Test User", "123 Test St", "1234567890");
 
 //test getting username 
 
@@ -73,7 +73,9 @@ assertEquals("1234567890", $user->getPhoneNo(), "Test getting phoneNo");
 $user->setPhoneNo("9876543210");
 assertEquals("9876543210", $user->getPhoneNo(), "Test setting phoneNo");
 
-
+//test getting id 
+$id = $user->getId();
+echo nl2br("id = $id\n");
 
 ?>
 
