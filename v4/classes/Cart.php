@@ -10,11 +10,11 @@ class Cart
             $this->items[$id]['quantity'] += $quantity;
         } else {
             $this->items[$id] = [
-                'id'       => $id,
-                'name'     => $name,
-                'type'     => $type, // new, used, or equipment
-                'price'    => $price,
-                'quantity' => $quantity
+            'id'       => $id,
+            'name'     => $name,
+            'type'     => $type, 
+            'price'    => $price,
+            'quantity' => $quantity
             ];
         }
     }
