@@ -47,7 +47,9 @@ if (mysqli_num_rows($adsResult) > 0) {
         $ads[] = $row;
     }
 }
-
+else{
+    echo "ad array is empty";
+}
 echo json_encode($ads);
 
 //close connection
@@ -60,6 +62,7 @@ $conn->close();
      <?php include'Header.php';?>
      <link rel="stylesheet" href="css/Home.css" type="text/css">
     <section class="ad-container">
+        <script src="js/adBanner.js"></script>
         <div class="slider">
             <?php foreach ($ads as $ad): ?>
                 <img src="util/display_image.php?image_id=<?=$ad['image_id'] ?>" class='ad' alt="Advertisement">
@@ -68,7 +71,6 @@ $conn->close();
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
         </section>
-        <script src="js/adBanner.js"></script>
         
         <!--section for products display-->
     <section class= "products-section">

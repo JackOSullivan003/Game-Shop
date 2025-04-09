@@ -15,6 +15,8 @@ function assertEquals($expected, $actual, $message) {
 
 $cart = new Cart();
 
+$cart->clearCart();
+
 // Test Add Item to Cart
 $productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
 $productResult = mysqli_query($conn, $productRequest);

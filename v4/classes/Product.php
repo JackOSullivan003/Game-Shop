@@ -2,14 +2,17 @@
     private $id; 
     private $title; 
     private $description;
+    private $genre; 
+    private $condition; 
     private $price;
     private $image;
 
 
-    public function __construct($id, $title, $description, $price, $image) {
+    public function __construct($id, $title, $description, $genre, $condition, $price, $image) {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
+        $this->$genre;
         $this->price = $price;
         $this->image = $image;
     }

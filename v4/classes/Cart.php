@@ -55,6 +55,7 @@ class Cart {
     public function clearCart()
     {
         $this->items = [];
+        $_SESSION['cart'] = [];
     }
 }
 
