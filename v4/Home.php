@@ -34,22 +34,36 @@ if (mysqli_num_rows($productResult) > 0) {
     }
 }
 
-//echo json_encode($products);
+// $testQuery = "SELECT * FROM Images";
+// $testResult = mysqli_query($conn, $testQuery);
+// echo "<p>Total rows in Images: " . mysqli_num_rows($testResult) . "</p>";
 
-$adsRequest = "SELECT * FROM Images WHERE product_id IS NULL";
+
+$adsRequest = "SELECT * FROM Images WHERE product_id = ''";
 
 $adsResult = mysqli_query($conn, $adsRequest);
-//create array of ads from database
+
+if (!$adsResult) {
+    die("<p>Query failed: " . mysqli_error($conn) . "</p>");
+} else {
+    echo "<p>Query succeeded</p>";
+}
+
+$debugQuery = "SELECT image_id, product_id, LENGTH(product_id) AS len, ISNULL(product_id) AS is_null FROM Images";
+$debugResult = mysqli_query($conn, $debugQuery);
+while ($row = mysqli_fetch_assoc($debugResult)) {
+    echo "<pre>" . print_r($row, true) . "</pre>";
+}
 
 $ads = [];
 if (mysqli_num_rows($adsResult) > 0) {
-    while($row = mysqli_fetch_assoc($adsResult)) {
+    while ($row = mysqli_fetch_assoc($adsResult)) {
         $ads[] = $row;
     }
-}
-else{
+} else {
     echo "ad array is empty";
 }
+
 echo json_encode($ads);
 
 //close connection
