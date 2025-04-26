@@ -1,0 +1,232 @@
+.ad-container img {
+    position: absolute; /* Stacks images on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Make images fill the container */
+    height: 100%;
+    object-fit: contain; /* Ensures images fit nicely */
+    opacity: 0; /* Hide images initially */
+    transition: opacity 1s ease-in-out;
+}
+.ad-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    height: 300px;
+    background-color: black;
+}
+
+.ad-container button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.product { 
+    display: inline-block;
+    justify-content: center;
+    background-color: white; 
+    margin: 20px; 
+    max-width: 200px;
+    max-height: 300px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    vertical-align: middle;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+}
+
+.products-section {
+    background-color: lightgrey; 
+}
+
+.products-section h2 {
+    padding-top: 25px;
+}
+
+.product-details {
+    text-decoration: none;
+    color: rgb(110, 1, 110);
+}
+.product:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*product link decoration*/
+
+.product:visited {
+    text-decoration-color: lightgrey;
+}
+
+.product:hover {
+    text-decoration-color: lightblue;
+}
+
+.product .product-details {
+    /*set maximum height for product descriptions*/
+    min-width: 150px;
+    min-height: 10px;
+    max-height: 80px;
+    max-width: 220px;
+    padding: 5px;
+    /*center in section*/
+    background-color: lightgrey;
+    display: inline-block;
+}
+.product img { 
+    width: 100%;
+    height: 100%;
+    max-width: 180px; 
+    max-height: 200px; 
+    padding: 10px;
+    object-fit: contain;
+    display: block;
+}
+.product h3 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: bold;
+
+}
+.product p {
+    margin: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 0;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .ad-container {
+        height: 180px;
+    }
+
+    .ad-container button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .product {
+        max-width: 100%;
+        margin: 15px 0;
+        justify-content: center;
+    }
+
+    .product .product-details {
+        font-size: 14px;
+    }
+
+    .product h3 {
+        font-size: 18px;
+    }
+
+    .product p {
+        font-size: 14px;
+    }
+
+    .products-section h2 {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .ad-container {
+        height: 200px;
+    }
+
+    .ad-container button {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .product {
+        max-width: 100%;
+        margin: 15px 0;
+    }
+
+    .product .product-details {
+        font-size: 16px;
+    }
+
+    .product h3 {
+        font-size: 20px;
+    }
+
+    .product p {
+        font-size: 16px;
+    }
+
+    .products-section h2 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .ad-container {
+        height: 250px;
+    }
+
+    .ad-container button {
+        padding: 14px;
+        font-size: 20px;
+    }
+
+    .product {
+        max-width: 80%;
+        margin: 20px;
+    }
+
+    .product .product-details {
+        font-size: 18px;
+    }
+
+    .product h3 {
+        font-size: 22px;
+    }
+
+    .product p {
+        font-size: 18px;
+    }
+
+    .products-section h2 {
+        font-size: 24px;
+    }
+}

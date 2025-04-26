@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+header{
+    background-color: lightgray;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.header a {
+    text-decoration: none;
+    color: purple;     
+}
+
+.header a:hover {
+    text-decoration: none; /* still no underline */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.title-box{
+    display: flex;
+    align-items: center;
+}
+#title {
+    text-align: left;
+    font-size: 40px;
+    width: auto;
+    background: -webkit-linear-gradient(blue, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevents title from wrapping */
+    
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.upload-btn {
+    padding: 10px;
+}
+
+
+/* Cart */
+.cart-container {
+    padding: 10px;
+}
+
+#cartCount{
+    font-size:24px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown button {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .search-bar-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .search-bar {
+        width: 45%;
+        padding: 10px;
+    }
+
+    .cart-icon-container {
+        margin: 10px 0;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
