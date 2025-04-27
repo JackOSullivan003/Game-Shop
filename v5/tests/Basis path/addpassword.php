@@ -37,7 +37,7 @@ if (!empty($message)) {
 
 return $result; 
 } 
-addPasswordToAccount("Wrongpassword", "user123");
+addPasswordToAccount("password", "user123");
 
 //The end 
 
