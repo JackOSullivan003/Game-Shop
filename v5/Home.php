@@ -55,17 +55,21 @@ echo json_encode($adsResult);
     <section class= "products-section">
         <h2>Products</h2>
         <!--displaying products stored in products variable using a PHP foreach loop-->
-        <?php foreach ($productResult as $product): ?>
-            <div class="product">
-                <a href="ProductPage.php?id=<?= $product['product_id']; ?>" >
-                <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
-                <div class="product-details">
-                    <h3 class ="product-title"><?= $product['product_name']; if($product['conditions'] === 'used'): echo " - USED"; endif;?></h3>
-                    <p class="product-price">Price: <?= $product['price']; ?></p>
+        <div class="products-grid">
+            <?php foreach ($productResult as $product): ?>
+                <div class="product">
+                    <a href="ProductPage.php?id=<?= $product['product_id']; ?>">
+                        <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
+                        <div class="product-details">
+                            <h3 class="product-title">
+                                <?= $product['product_name']; if ($product['conditions'] === 'used') echo " - USED"; ?>
+                            </h3>
+                            <p class="product-price">Price: <?= $product['price']; ?></p>
+                        </div>
+                    </a>
                 </div>
-                </a>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </section>
 
     <?php include'Footer.php';?>

@@ -17,6 +17,8 @@ function assertEquals($expected, $actual, $message) {
 //create new user and test getters and setters 
 $user = new User(null, "testuser", "password123", "test@example.com", "Test User", "123 Test St", "1234567890");
 
+$user->login();
+
 //test getting username 
 assertEquals("testuser", $user->getUsername(), "Test getting username");
 
@@ -76,7 +78,7 @@ echo nl2br("id = $id\n");
 <body>
 <!--Home link -->
 
-<a href="home.php">Home</a>
+<a href=".">Back</a>
 
 </body>
 </html>

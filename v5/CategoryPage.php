@@ -47,22 +47,21 @@ if (isset($_GET['category_id'])) {
 <body>
 <?php if (count($products) > 0): ?>
     <h1>Category: <?= htmlspecialchars($products[0]['category_name']); ?></h1>
-    <?php foreach ($products as $product): ?>
-        <div class="product">
-            <a href="ProductPage.php?id=<?= htmlspecialchars($product['product_id']); ?>">
-                <img src="util/display_image.php?image_id=<?= htmlspecialchars($product['image_id']); ?>" alt="Product Image">
-                <div class="product-details">
-                    <h3 class="product-title">
-                        <?= htmlspecialchars($product['product_name']); ?>
-                        <?php if ($product['conditions'] === 'used'): ?>
-                            - USED
-                        <?php endif; ?>
-                    </h3>
-                    <p class="product-price">Price: <?= htmlspecialchars($product['price']); ?></p>
-                </div>
-            </a>
-        </div>
-    <?php endforeach; ?>
+    <div class="products-grid">
+        <?php foreach ($productResult as $product): ?>
+            <div class="product">
+                <a href="ProductPage.php?id=<?= $product['product_id']; ?>">
+                    <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
+                    <div class="product-details">
+                        <h3 class="product-title">
+                            <?= $product['product_name']; if ($product['conditions'] === 'used') echo " - USED"; ?>
+                        </h3>
+                        <p class="product-price">Price: <?= $product['price']; ?></p>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
 <?php else: ?>
     <p>This category is empty.</p>
 <?php endif; ?>
