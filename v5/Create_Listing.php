@@ -6,7 +6,6 @@ include 'util/common.php';
 session_start();
 
 
-echo $_SESSION['user_id'];
 if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == NULL) {
     $msg = "<p style='color:red;'>You must be logged in to create a listing.</p>";
     echo $msg;
@@ -204,44 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <title>Game & Stop - Create Listing</title>
     <?php include'Header.php';?>
-    <style>
-        form {
-            margin: 20px auto;
-            width: 300px;
-            padding: 20px;
-            background-color: #f2f2f2;
-        }
-
-        body {
-                font-family: Arial, sans-serif;
-
-            }
-
-        h2 {
-            text-align: center;
-        }
-
-        label, input, textarea, select {
-            display: inline-block;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-
-        input[type="submit"] {
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-            }
-
-        .hidden { display: none; }
-
-        .message { text-align: center; }
-    </style>
-
+    
 <body>
 <h2>List Second Hand Item For Sale</h2>
 <form method="POST" id="listingForm" enctype="multipart/form-data">

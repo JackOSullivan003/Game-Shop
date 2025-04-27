@@ -23,10 +23,11 @@ if (isset($_GET['action'])) {
   }
 </script>
 <?php include 'Header.php'; ?>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/cartpage.css" type="text/css">
 <body>
-
-<h1>Cart</h1>
-<ul>
+  <div class='cart'>
+  <h1>Cart</h1>
   <?php 
   $cart = new Cart();
   $cartItems = $cart->getCartItems();
@@ -37,19 +38,17 @@ if (isset($_GET['action'])) {
     //calculate total price of cart
 
     foreach ($cartItems as $item) {?>
-      <li>
-        <a href="ProductPage.php?id=<?php echo $item['id'];?>"><?php echo $item['title'];?></a>
-        x <?php echo $item['quantity'];?>
-        - $<?php echo $item['price'] * $item['quantity'];?>
+        <a href="ProductPage.php?id=<?php echo $item['id'];?>"><?php echo $item['title'];?></a> x <?php echo $item['quantity'];?> - $<?php echo $item['price'] * $item['quantity'];?>
         <a href="#" onclick="removeFromCart(<?= $item['id'] ?>)">Remove</a>
-      </li>
     <?php }?>
-    <li>Total: $<?php echo $cart->getTotalPrice();?></li>
-    <li><a href="checkout.php">Checkout</a></li>
+    <P>--------------------- </P>
+    Total: $<?php echo $cart->getTotalPrice();?> <br><br>
+    <a href="checkout.php">Proceed To Checkout</a><br><br>
   <?php }?>
 
   <!-- home buttom -->
    <a href="Home.php">Home</a>
-</ul>
+  </div>
 </body>
+<?php include 'Footer.php'; ?>
 </html>

@@ -7,3 +7,34 @@ body {
     border-radius: 10px;
     margin: 10px;    
 }
+
+label, input, textarea, select {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+form {
+    margin: 20px auto;
+    width: 300px;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+.hidden { display: none; }
+
+.message { text-align: center; }
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.order-details {
+    background-color: #f2f2f2;
+}
