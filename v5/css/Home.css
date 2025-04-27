@@ -44,10 +44,9 @@
 
 .product { 
     display: inline-block;
-    justify-content: center;
     background-color: white; 
     margin: 20px; 
-    max-width: 200px;
+    max-width: 450px;
     max-height: 300px;
     padding: 10px; 
     border: 1px solid #ccc; 
@@ -65,10 +64,6 @@
     padding-top: 25px;
 }
 
-.product-details {
-    text-decoration: none;
-    color: rgb(110, 1, 110);
-}
 .product:hover {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -88,8 +83,10 @@
     min-width: 150px;
     min-height: 10px;
     max-height: 80px;
-    max-width: 220px;
+    max-width: auto;
     padding: 5px;
+    text-decoration: none;
+    color: rgb(110, 1, 110);
     /*center in section*/
     background-color: lightgrey;
     display: inline-block;
@@ -99,9 +96,10 @@
     height: 100%;
     max-width: 180px; 
     max-height: 200px; 
-    padding: 10px;
+    padding: 5px;
     object-fit: contain;
     display: block;
+    
 }
 .product h3 {
     margin: 0;

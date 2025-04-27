@@ -107,7 +107,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'addtocart') {
             <div class="product">
                 <!-- Left: Product Image -->
                 <div class="product-image">
-                    <img src="util/display_image.php?image_id=<?= $product['product_id']; ?>">
+                    <img src="util/display_image.php?product_id=<?= $product['product_id']; ?>">
                 </div>
 
                 <!-- Middle: Description -->

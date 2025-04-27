@@ -17,7 +17,7 @@ else {
     echo '<p>Hello, Guest!</p>';
 }
 
-$productRequest = "SELECT p.product_id, p.product_name, p.price, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
+$productRequest = "SELECT p.product_id, p.product_name, p.price, p.conditions, i.image_id FROM Products p LEFT JOIN Images i ON p.product_id = i.product_id";
 
 $statement = $connection->prepare($productRequest);
 if($statement->execute()){
@@ -60,7 +60,7 @@ echo json_encode($adsResult);
                 <a href="ProductPage.php?id=<?= $product['product_id']; ?>" >
                 <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
                 <div class="product-details">
-                    <h3 class ="product-title"><?= $product['product_name']; ?></h3>
+                    <h3 class ="product-title"><?= $product['product_name']; if($product['conditions'] === 'used'): echo " - USED"; endif;?></h3>
                     <p class="product-price">Price: <?= $product['price']; ?></p>
                 </div>
                 </a>

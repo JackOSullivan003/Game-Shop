@@ -33,12 +33,8 @@ function logoutUser() {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title></title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="" />
-</head>
+<?php include'Header.php';?>
+<link rel="stylesheet" href="css/style.css" type="text/css">
 <body>
   <h1>User Account Details</h1>
 <!--basic user management, update username, logout option -->

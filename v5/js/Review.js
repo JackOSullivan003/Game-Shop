@@ -15,7 +15,7 @@ function selectRating(rating) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const reviewSection = document.getElementsByClassName('review-section')[1];  
+  const reviewSection = document.getElementsByClassName('review-section')[1];  
   const textarea = document.getElementById('review-text'); 
   const loginButton = document.createElement('button');  // Create the login button
   loginButton.classList.add('login-button');
