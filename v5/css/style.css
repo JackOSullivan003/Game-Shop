@@ -8,6 +8,10 @@ body {
     margin: 10px;    
 }
 
+h1 {
+    padding-top: 5px;
+}
+
 label, input, textarea, select {
     display: inline-block;
     margin-bottom: 10px;
@@ -54,6 +58,9 @@ input[type="submit"] {
     padding: 10px;
     border-radius: 8px;
     text-align: center;
+    object-fit: contain;
+    max-height: 400px;
+
 }
 
 
@@ -63,11 +70,10 @@ input[type="submit"] {
     min-height: 10px;
     max-height: 80px;
     max-width: auto;
-    padding: 5px;
+    padding: 10px;
     padding-inline: 35px;
     text-decoration: none;
     color: rgb(110, 1, 110);
-    /*center in section*/
     background-color: lightgrey;
     display: inline-block;
 }
@@ -75,9 +81,9 @@ input[type="submit"] {
 .product img { 
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: auto;
     max-width: 180px; 
-    max-height: 200px; 
+    max-height: 180px; 
     padding: 5px;
     object-fit: contain;
     display: block;

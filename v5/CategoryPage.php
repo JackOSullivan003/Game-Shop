@@ -46,9 +46,10 @@ if (isset($_GET['category_id'])) {
 </head>
 <body>
 <?php if (count($products) > 0): ?>
+    <section class= "products-section">
     <h1>Category: <?= htmlspecialchars($products[0]['category_name']); ?></h1>
     <div class="products-grid">
-        <?php foreach ($productResult as $product): ?>
+        <?php foreach ($products as $product): ?>
             <div class="product">
                 <a href="ProductPage.php?id=<?= $product['product_id']; ?>">
                     <img src="util/display_image.php?image_id=<?= $product['image_id']; ?>">
@@ -62,6 +63,7 @@ if (isset($_GET['category_id'])) {
             </div>
         <?php endforeach; ?>
     </div>
+    </section>
 <?php else: ?>
     <p>This category is empty.</p>
 <?php endif; ?>
