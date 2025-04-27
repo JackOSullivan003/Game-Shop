@@ -35,6 +35,7 @@ class User {
     //log out user
     public function logout() {
         unset($_SESSION['user']);
+        unset($_SESSION['user_id']);
         return true;
     }
     public function getId() {
@@ -64,6 +65,8 @@ class User {
     //basic setter methods
     public function setId($id) {
         $this->id = $id;
+        $_SESSION['user_id'] = $this->getId();
+
     }
     public function setUsername($username) {
         $this->username = $username;

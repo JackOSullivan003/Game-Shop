@@ -61,9 +61,13 @@ assertEquals("1234567890", $user->getPhoneNo(), "Test getting phoneNo");
 $user->setPhoneNo("9876543210");
 assertEquals("9876543210", $user->getPhoneNo(), "Test setting phoneNo");
 
-//test getting id 
-$id = $user->getId();
-echo nl2br("id = $id\n");
+//test setting id
+$user->setId("1");
+
+//test getting id
+assertEquals("1", $user->getId(), "Test Setting Id");
+
+$user->logout();
 
 ?>
 

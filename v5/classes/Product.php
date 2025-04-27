@@ -12,7 +12,7 @@
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
-        $this->$genre;
+        $this->genre = $genre;
         $this->price = $price;
         $this->image = $image;
     }
@@ -52,15 +52,18 @@
     }
 
     public function setPrice($price) {
-        $this->price = $price;
+        if($price < 0){
+            return false;
+        }
+        else{
+            $this->price = $price;
+            return true;
+        }
     }
 
     public function setImage($image) {
         $this->image = $image;
     }
-
-
-    
 }
 
 ?>
