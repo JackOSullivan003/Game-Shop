@@ -6,11 +6,11 @@ $user = $_SESSION['user'];
 
 //display information about the user
 
-echo "Name: " . $user->getUsername() . "<br>";
-echo "Email: " . $user->getEmail() . "<br>";
-echo "Full Name: " . $user->getFullName() . "<br>";
-echo "address: " . $user->getAddress() . "<br>";
-echo "Phone: " . $user->getPhoneNo() . "<br>";
+$username =  "Name: " . $user->getUsername() . "<br>";
+$email =  "Email: " . $user->getEmail() . "<br>";
+$name = "Full Name: " . $user->getFullName() . "<br>";
+$address = "address: " . $user->getAddress() . "<br>";
+$phoneno =  "Phone: " . $user->getPhoneNo() . "<br>";
 
 // Check if the logout action is triggered
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
@@ -37,14 +37,24 @@ function logoutUser() {
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <body>
   <h1>User Account Details</h1>
-<!--basic user management, update username, logout option -->
-
+<div style = "background-color: #f2f2f2">
+  <!--basic user management, update username, logout option -->
+  <?php
+    echo $username;
+    echo $email;
+    echo $name ;
+    echo $address;
+    echo $phoneno;
+  ?>
 <a href="">Update User</a>
 
 <!--logout user through php logout() and load back to home.php-->
 <a href="#" onclick="logoutUser()">Logout</a>
 
- <a href="Home.php">Home</a>
+<a href="Home.php">Home</a>
 
+</div>
 </body>
+
+<?php include'Footer.php';?>
 </html>

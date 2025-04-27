@@ -23,6 +23,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageData = null;
     $imageType = null;
 
+
+    // Verify Category exists
+    $catStmt = $connection->prepare("SELECT * FROM Categories WHERE category_id = :category_id");
+    $catStmt->execute([':category_id' => $categoryId]);
+    if (!$catStmt->fetch()) {
+        die("<p style='color:red;'>Invalid category selected.</p>");
+    }
+
+    // Verify User exists
+    $userStmt = $connection->prepare("SELECT * FROM Users WHERE user_id = :user_id");
+    $userStmt->execute([':user_id' => $userId]);
+    if (!$userStmt->fetch()) {
+        $_SESSION['user']->logout();
+        die("<p style='color:red;'>Invalid user. Please log in again.</p>");
+    }
+
+
     if (isset($image) && $image['error'] === UPLOAD_ERR_OK) {
         $imageData = file_get_contents($image['tmp_name']); // 🡒 store data separately
         $imageType = $image['type'];
@@ -254,11 +271,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <input type="submit" value="Upload Product">
-</form>
-
 <?php if($msg != ""){
     echo $msg;
 } ?>
+</form>
+
+
 <script>
 document.getElementById("categorySelect").addEventListener("change", function () {
     const categoryId = this.value;
