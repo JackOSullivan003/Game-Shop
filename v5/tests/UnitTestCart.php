@@ -54,8 +54,6 @@ $cart->clearCart();
 $items = $cart->getCartItems();
 
 assertEquals(0, count($items), "Test Clear Cart");
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
