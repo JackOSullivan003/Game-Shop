@@ -203,7 +203,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <title>Game & Stop - Create Listing</title>
     <?php include'Header.php';?>
-    
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
 <body>
 <h2>List Second Hand Item For Sale</h2>
 <form method="POST" id="listingForm" enctype="multipart/form-data">
