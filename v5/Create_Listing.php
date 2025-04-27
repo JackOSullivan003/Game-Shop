@@ -266,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="new_title">
 
         <label>Description:</label>
-        <textarea name="new_description"></textarea>    
+        <textarea name="new_description" rows="10" style="resize: none;"></textarea>    
 
     </div>
 

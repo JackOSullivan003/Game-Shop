@@ -68,7 +68,7 @@
                 categories.Games.forEach(category => {
                     let link = document.createElement("a");
                     link.textContent = category.category_name;
-                    link.href = "#"; // link to page with products from that category
+                    link.href = "CategoryPage.php?category_id=" + category.category_id; // link to page with products from that category
                     link.onclick = function() {
                         fetchGames(category.category_id);
                     };
@@ -78,7 +78,7 @@
                 categories.Merch.forEach(category => {
                     let link = document.createElement("a");
                     link.textContent = category.category_name;
-                    link.href = "#"; //link to merch of different category
+                    link.href = "CategoryPage.php?category_id=" + category.category_id; //link to merch of different category
                     link.onclick = function() {
                         fetchMerchandise(category.category_id);
                     };
