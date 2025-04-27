@@ -37,7 +37,7 @@ $items = $cart->getCartItems();
 assertEquals(2, $items[1]['quantity'], "Test Update Item Quantity");
 
 // Test Remove Item from Cart
-$cart->removeProduct($products[0]);
+$cart->removeProduct($products[0]['product_id']);
 $items = $cart->getCartItems();
 
 assertEquals(1, count($items), "Test Remove Item From Cart");
