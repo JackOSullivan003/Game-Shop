@@ -6,3 +6,4 @@ Contribution Statement - Doris_Zaragoza_B00161783
 I (Doris Zaragoza) contributed to doing the diagrams and some documentation and helping with the testing and finalization.  
 
 Contribution Statement - Jack_O'Sullivan_B00142313 
+I mainly contributed to creating the frontend code, database connections & assisted with the database setup. 
