@@ -39,26 +39,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   } 
   
-  const reviewForm = document.getElementById('review-form');
-    
-    if (reviewForm) {
-        reviewForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent default form submission
-
-            const reviewText = document.getElementById('review-text').value;
-            const rating = document.getElementById('rating').value;
-
-            // Check if review text is not empty
-            if (reviewText.trim() === "") {
-                alert("Please enter a review text.");
-                return;
-            }
-        const formData = new FormData();
-        formData.append('review_text', reviewText);
-        formData.append('product_id', product_id);
-    
-        const request = new XMLHttpRequest();
-        request.open('POST', window.location.href, true); // send to same page
-      });
-    }
 });
