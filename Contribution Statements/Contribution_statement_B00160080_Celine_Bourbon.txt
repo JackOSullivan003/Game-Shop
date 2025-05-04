@@ -1,1 +1,0 @@
-Celine: I was mainly in charge of the documentation, planning and organisation of the project along with the data base, i assisted in adding the review feature into the code and helped with the UI testing, Unit testing, basis testing and Equivalence testing.
